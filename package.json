@@ -1,0 +1,11 @@
+{
+  "name": "todo-vanilla-js-mvp-implementation",
+  "version": "1.0.0",
+  "description": "MVP implementation",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mahady Chowdhury",
+  "license": "ISC"
+}
