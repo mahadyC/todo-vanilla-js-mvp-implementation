@@ -1,3 +1,6 @@
 let paragraph = document.createElement("p");
 
-export { paragraph }
+const view = {
+  paragraph: paragraph
+}
+export { view }

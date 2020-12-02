@@ -1,12 +1,12 @@
 import { model } from './model'
-import { paragraph } from './view'
+import { view } from './view'
 
 let state = model;
 
 let render = () => {
   console.log("hi");
-  paragraph.append("hello");
-  return document.querySelector("ul").appendChild(paragraph);
+  view.paragraph.append("hello");
+  return document.querySelector("ul").appendChild(view.paragraph);
 }
 
 export { render }
