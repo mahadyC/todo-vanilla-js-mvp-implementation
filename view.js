@@ -19,10 +19,18 @@ const textNode = (text) =>{
   let textNd = document.createTextNode(text);
   return textNd;
 }
+const buttonEl = (buttonType, buttonName) =>{
+  let el = document.createElement("button");
+  el.id = `button-item-name`;
+  el.type = "button";
+  el.textContent = `${buttonType} ${buttonName}`;
+  return el;
+}
 const view = {
   listEl: listEl,
   divEl: divEl,
   checkboxEl: checkboxEl,
-  textNode: textNode
+  textNode: textNode,
+  buttonEl: buttonEl
 }
 export { view }
