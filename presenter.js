@@ -3,9 +3,18 @@ import { view } from './view'
 
 let state = model;
 const deleteItem = (itemName) =>{
-  let itemObj = model.allTasks.filter(item => item.name === itemName);
-  let itemIndex = model.allTasks.findIndex(item => item === itemObj[0]);
-  model.allTasks.splice(itemIndex, 1);
+  let itemObj = state.allTasks.filter(item => item.name === itemName);
+  let itemIndex = state.allTasks.findIndex(item => item === itemObj[0]);
+  state.allTasks.splice(itemIndex, 1);
+};
+const updateItem = (previousName, newName, completeValue) =>{
+  let itemIndex = state.allTasks.findIndex(item => item.name === previousName);
+  let newObj = {
+    id:"unique-id",
+    name: newName,
+    complete: completeValue
+  };
+  state.allTasks.splice(itemIndex, 1, newObj);
 };
 let render = () => {
 
@@ -17,7 +26,7 @@ let render = () => {
     const textNd = view.textNode(item.name);
     const itemDiv2 = view.divEl(`${item.name}-rewrite-div`);
     const editInp = view.editInputEl(item.name);
-    const saveChange = view.buttonEl("Save", item.name);
+    const saveBtn = view.buttonEl("Save", item.name);
     const itemDiv3 = view.divEl(`${item.name}Edit-div`);
     const editBtn = view.buttonEl("Edit", item.name);
     const deleteBtn = view.buttonEl("Delete", item.name);
@@ -27,7 +36,7 @@ let render = () => {
     itemDiv1.appendChild(textNd);
     listItem.appendChild(itemDiv2);
     itemDiv2.appendChild(editInp);
-    itemDiv2.appendChild(saveChange);
+    itemDiv2.appendChild(saveBtn);
     listItem.appendChild(itemDiv3);
     itemDiv3.appendChild(editBtn);
     itemDiv3.appendChild(deleteBtn);
@@ -40,6 +49,15 @@ let render = () => {
       const item = document.getElementById(`${event.target.id.substring(14)}`);
       item.remove();
       deleteItem(item.id);
+    });
+    saveBtn.addEventListener("click", (event) =>{
+      const item = document.getElementById(`${event.target.id.substring(12)}-rewrite-div`);
+      const previousName = document.getElementById(`${event.target.id.substring(12)}`).id;
+      const newName = item.firstChild.value;
+      const checkedValue = item.previousElementSibling.firstElementChild.checked ;
+      updateItem(previousName, newName, checkedValue);
+      document.querySelector("ul").innerHTML = "";
+      render();
     });
     return listItem;
   });
