@@ -27,6 +27,11 @@ let render = () => {
     listItem.appendChild(itemDiv3);
     itemDiv3.appendChild(editBtn);
     itemDiv3.appendChild(deleteBtn);
+    itemDiv2.hidden = true;
+    editBtn.addEventListener("click", (event) =>{
+      const item = document.getElementById(`${event.target.id.substring(7)}-rewrite-div`);
+      item.hidden ? item.hidden = false : item.hidden = true;
+    });
     return listItem;
   });
   console.log(allTasksState);
