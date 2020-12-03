@@ -8,9 +8,9 @@ const divEl = (id) =>{
   el.id = id;
   return el;
 }
-const checkboxEl = (complete) =>{
+const checkboxEl = (complete, itemName) =>{
   let el = document.createElement("input");
-  el.id = `checkbox-input-name`;
+  el.id = `checkbox-${itemName}`;
   el.type = "checkbox";
   el.checked = complete;
   return el;
@@ -21,7 +21,7 @@ const textNode = (text) =>{
 }
 const buttonEl = (buttonType, buttonName) =>{
   let el = document.createElement("button");
-  el.id = `button-item-name`;
+  el.id = `button-${buttonName}`;
   el.type = "button";
   el.textContent = `${buttonType} ${buttonName}`;
   return el;
