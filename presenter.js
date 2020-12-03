@@ -29,11 +29,11 @@ let render = () => {
     itemDiv3.appendChild(deleteBtn);
     itemDiv2.hidden = true;
     editBtn.addEventListener("click", (event) =>{
-      const item = document.getElementById(`${event.target.id.substring(7)}-rewrite-div`);
+      const item = document.getElementById(`${event.target.id.substring(12)}-rewrite-div`);
       item.hidden ? item.hidden = false : item.hidden = true;
     });
     deleteBtn.addEventListener("click", (event) => {
-      const item = document.getElementById(`${event.target.id.substring(7)}`);
+      const item = document.getElementById(`${event.target.id.substring(14)}`);
       item.remove();
     });
     return listItem;

@@ -21,7 +21,7 @@ const textNode = (text) =>{
 }
 const buttonEl = (buttonType, buttonName) =>{
   let el = document.createElement("button");
-  el.id = `button-${buttonName}`;
+  el.id = `${buttonType}-button-${buttonName}`;
   el.type = "button";
   el.textContent = `${buttonType} ${buttonName}`;
   return el;
