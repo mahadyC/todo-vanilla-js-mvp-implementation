@@ -2,7 +2,11 @@ import { model } from './model'
 import { view } from './view'
 
 let state = model;
-
+const deleteItem = (itemName) =>{
+  let itemObj = model.allTasks.filter(item => item.name === itemName);
+  let itemIndex = model.allTasks.findIndex(item => item === itemObj[0]);
+  model.allTasks.splice(itemIndex, 1);
+};
 let render = () => {
 
   const allTasksState = state.allTasks.map(item =>{
@@ -35,6 +39,7 @@ let render = () => {
     deleteBtn.addEventListener("click", (event) => {
       const item = document.getElementById(`${event.target.id.substring(14)}`);
       item.remove();
+      deleteItem(item.id);
     });
     return listItem;
   });
