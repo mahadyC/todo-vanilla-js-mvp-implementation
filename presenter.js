@@ -16,8 +16,24 @@ const updateItem = (previousName, newName, completeValue) =>{
   };
   state.allTasks.splice(itemIndex, 1, newObj);
 };
+const addItem = (itemName) =>{
+  let newObj = {
+    id: "unique-id",
+    name: itemName,
+    complete: false
+  }
+  state.allTasks.push(newObj);
+};
+const addInp = document.getElementById("task-name-input");
+const addBtn = document.getElementById("add-task");
+addBtn.addEventListener("click", (event) =>{
+  console.log(state.allTasks);
+  addItem(addInp.value);
+  console.log(state.allTasks);
+  document.querySelector("ul").innerHTML = "";
+  render();
+});
 let render = () => {
-
   const allTasksState = state.allTasks.map(item =>{
     const list = document.querySelector("ul");
     const listItem = view.listEl(item.name);
