@@ -26,11 +26,19 @@ const buttonEl = (buttonType, buttonName) =>{
   el.textContent = `${buttonType} ${buttonName}`;
   return el;
 }
+const editInputEl = (itemName) =>{
+  let el = document.createElement("input");
+  el.id = `edit-${itemName}`;
+  el.type = "text";
+  el.value = itemName;
+  return el;
+}
 const view = {
   listEl: listEl,
   divEl: divEl,
   checkboxEl: checkboxEl,
   textNode: textNode,
-  buttonEl: buttonEl
+  buttonEl: buttonEl,
+  editInputEl: editInputEl
 }
 export { view }
