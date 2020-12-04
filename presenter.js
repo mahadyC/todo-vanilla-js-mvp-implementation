@@ -35,7 +35,8 @@ addBtn.addEventListener("click", (event) =>{
 });
 const allTasksBtn = document.getElementById("show-all-tasks");
 allTasksBtn.addEventListener("click", (event) => {
-  console.log("show all tasks");
+  document.querySelector("ul").innerHTML = "";
+  render.allTasksState();
 });
 let render ={
   allTasksState: () => {
