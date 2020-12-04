@@ -54,7 +54,8 @@ activeTasksBtn.addEventListener("click", (event) => {
 });
 const completeTasksBtn = document.getElementById("show-complete-tasks");
 completeTasksBtn.addEventListener("click", (event) => {
-  console.log("show complete tasks");
+  document.querySelector("ul").innerHTML = "";
+  render.completeTasks();
 });
 const allTasksUI = (item) => {
   const list = document.querySelector("ul");
@@ -113,6 +114,12 @@ let render ={
   activeTasks: () => {
     const activeList = state.allTasks.filter(item => item.complete === false);
     activeList.forEach(element =>{
+      allTasksUI(element);
+    });
+  },
+  completeTasks: () => {
+    const completeList = state.allTasks.filter(item => item.complete === true);
+    completeList.forEach(element =>{
       allTasksUI(element);
     });
   }
