@@ -52,6 +52,10 @@ activeTasksBtn.addEventListener("click", (event) => {
   document.querySelector("ul").innerHTML = "";
   render.activeTasks();
 });
+const completeTasks = document.getElementById("show-complete-tasks");
+completeTasks.addEventListener("click", (event) => {
+  console.log("show complete tasks");
+});
 const allTasksUI = (item) => {
   const list = document.querySelector("ul");
   const listItem = view.listEl(item.name);
