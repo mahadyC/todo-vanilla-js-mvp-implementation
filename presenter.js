@@ -33,6 +33,10 @@ addBtn.addEventListener("click", (event) =>{
   document.querySelector("ul").innerHTML = "";
   render();
 });
+const allTasksBtn = document.getElementById("show-all-tasks");
+allTasksBtn.addEventListener("click", (event) => {
+  console.log("show all tasks");
+});
 let render = () => {
   const allTasksState = state.allTasks.map(item =>{
     const list = document.querySelector("ul");
