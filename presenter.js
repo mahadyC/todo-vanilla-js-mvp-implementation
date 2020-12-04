@@ -116,6 +116,7 @@ let render ={
   allTasksState: () => {
    state.allTasks.forEach(element =>{
       allTasksUI(element);
+      element.complete === true ? completeTasksStyle(element.name) : "" ;
     }); 
   },
   activeTasks: () => {
