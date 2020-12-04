@@ -2,6 +2,7 @@ import { model } from './model'
 import { view } from './view'
 
 let state = model;
+/*-----------------------------------------------State-Handlers(State-Data-Manipulation)------------------------------------------ */
 const deleteItem = (itemName) =>{
   let itemObj = state.allTasks.filter(item => item.name === itemName);
   let itemIndex = state.allTasks.findIndex(item => item === itemObj[0]);
@@ -33,6 +34,7 @@ const addItem = (itemName) =>{
   }
   state.allTasks.push(newObj);
 };
+/*----------------------------------------------Data-Binders(State-Data+View/UI-Components)---------------------------------------*/
 const addInp = document.getElementById("task-name-input");
 const addBtn = document.getElementById("add-task");
 addBtn.addEventListener("click", (event) =>{
@@ -82,6 +84,7 @@ const saveBtnHandler = (event) =>{
   document.querySelector("ul").innerHTML = "";
   render.allTasksState();
 };
+/*------------------------------------------------------List-UI-Component--------------------------------------------------------*/
 const allTasksUI = (item) => {
   const list = document.querySelector("ul");
   const listItem = view.listEl(item.name);
@@ -119,11 +122,13 @@ const allTasksUI = (item) => {
   });
   return listItem;
 }
+/*---------------------------------------------------Style-Handler----------------------------------------------------------------*/
 const completeTasksStyle = (taskId) =>{
   const completeEl = document.getElementById(taskId);
   completeEl.style.textDecoration = "line-through";
   completeEl.lastElementChild.firstElementChild.disabled = true;
 }
+/*--------------------------------------------UI-Constructor(View-Handler)---------------------------------------------------------*/ 
 let render ={
   allTasksState: () => {
    state.allTasks.forEach(element =>{
