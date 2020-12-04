@@ -112,7 +112,7 @@ const allTasksUI = (item) => {
     editBtnHandler(event);
   });
   deleteBtn.addEventListener("click", (event) => {
-
+    deleteBtnHandler(event);
   });
   saveBtn.addEventListener("click", (event) =>{
     saveBtnHandler(event);
