@@ -57,6 +57,31 @@ completeTasksBtn.addEventListener("click", (event) => {
   document.querySelector("ul").innerHTML = "";
   render.completeTasks();
 });
+const changeHandler = (event) =>{
+  const itemName = event.target.id.substring(9);
+  let checkedValue = event.target.checked;
+  updateComplete(itemName, checkedValue);
+  document.querySelector("ul").innerHTML = "";
+  render.allTasksState();
+};
+const editBtnHandler = (event) =>{
+  const item = document.getElementById(`${event.target.id.substring(12)}-rewrite-div`);
+  item.hidden ? item.hidden = false : item.hidden = true;
+};
+const deleteBtnHandler = (event) =>{
+  const item = document.getElementById(`${event.target.id.substring(14)}`);
+  item.remove();
+  deleteItem(item.id);
+};
+const saveBtnHandler = (event) =>{
+  const item = document.getElementById(`${event.target.id.substring(12)}-rewrite-div`);
+  const previousName = document.getElementById(`${event.target.id.substring(12)}`).id;
+  const newName = item.firstChild.value;
+  const checkedValue = item.previousElementSibling.firstElementChild.checked ;
+  updateItemName(previousName, newName, checkedValue);
+  document.querySelector("ul").innerHTML = "";
+  render.allTasksState();
+};
 const allTasksUI = (item) => {
   const list = document.querySelector("ul");
   const listItem = view.listEl(item.name);
@@ -81,29 +106,16 @@ const allTasksUI = (item) => {
   itemDiv3.appendChild(deleteBtn);
   itemDiv2.hidden = true;
   checkBox.addEventListener("change", (event) => {
-    const itemName = event.target.id.substring(9);
-    let checkedValue = event.target.checked;
-    updateComplete(itemName, checkedValue);
-    document.querySelector("ul").innerHTML = "";
-    render.allTasksState();
+    changeHandler(event);
   });
   editBtn.addEventListener("click", (event) =>{
-    const item = document.getElementById(`${event.target.id.substring(12)}-rewrite-div`);
-    item.hidden ? item.hidden = false : item.hidden = true;
+    editBtnHandler(event);
   });
   deleteBtn.addEventListener("click", (event) => {
-    const item = document.getElementById(`${event.target.id.substring(14)}`);
-    item.remove();
-    deleteItem(item.id);
+
   });
   saveBtn.addEventListener("click", (event) =>{
-    const item = document.getElementById(`${event.target.id.substring(12)}-rewrite-div`);
-    const previousName = document.getElementById(`${event.target.id.substring(12)}`).id;
-    const newName = item.firstChild.value;
-    const checkedValue = item.previousElementSibling.firstElementChild.checked ;
-    updateItemName(previousName, newName, checkedValue);
-    document.querySelector("ul").innerHTML = "";
-    render.allTasksState();
+    saveBtnHandler(event);
   });
   return listItem;
 }
