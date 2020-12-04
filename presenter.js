@@ -47,6 +47,11 @@ allTasksBtn.addEventListener("click", (event) => {
   document.querySelector("ul").innerHTML = "";
   render.allTasksState();
 });
+const activeTasksBtn = document.getElementById("show-active-tasks");
+activeTasksBtn.addEventListener("click", (event) => {
+  const activeList = state.allTasks.filter(item => item.complete === false);
+  console.log(activeList);
+});
 let render ={
   allTasksState: () => {
    state.allTasks.map(item =>{
