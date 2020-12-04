@@ -1,4 +1,4 @@
 import { render } from './presenter'
 
-render();
+render.allTasksState();
 console.log("app render");
