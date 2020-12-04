@@ -7,7 +7,7 @@ const deleteItem = (itemName) =>{
   let itemIndex = state.allTasks.findIndex(item => item === itemObj[0]);
   state.allTasks.splice(itemIndex, 1);
 };
-const updateItem = (previousName, newName, completeValue) =>{
+const updateItemName = (previousName, newName, completeValue) =>{
   let itemIndex = state.allTasks.findIndex(item => item.name === previousName);
   let newObj = {
     id:"unique-id",
@@ -86,7 +86,7 @@ let render ={
         const previousName = document.getElementById(`${event.target.id.substring(12)}`).id;
         const newName = item.firstChild.value;
         const checkedValue = item.previousElementSibling.firstElementChild.checked ;
-        updateItem(previousName, newName, checkedValue);
+        updateItemName(previousName, newName, checkedValue);
         document.querySelector("ul").innerHTML = "";
         render.allTasksState();
       });
@@ -94,8 +94,6 @@ let render ={
         const itemName = event.target.id.substring(9);
         let checkedValue = event.target.checked;
         updateComplete(itemName, checkedValue);
-        console.log(itemName);
-        console.log(state.allTasks);
       });
       return listItem;
     }); 
