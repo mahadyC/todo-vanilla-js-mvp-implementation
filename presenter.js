@@ -105,6 +105,11 @@ const allTasksUI = (item) => {
   });
   return listItem;
 }
+const completeTasksStyle = (taskId) =>{
+  const completeEl = document.getElementById(taskId);
+  completeEl.style.textDecoration = "line-through";
+  completeEl.lastElementChild.firstElementChild.disabled = true;
+}
 let render ={
   allTasksState: () => {
    state.allTasks.forEach(element =>{
