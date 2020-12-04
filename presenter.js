@@ -129,6 +129,7 @@ let render ={
     const completeList = state.allTasks.filter(item => item.complete === true);
     completeList.forEach(element =>{
       allTasksUI(element);
+      completeTasksStyle(element.name);
     });
   }
 }
