@@ -49,8 +49,8 @@ allTasksBtn.addEventListener("click", (event) => {
 });
 const activeTasksBtn = document.getElementById("show-active-tasks");
 activeTasksBtn.addEventListener("click", (event) => {
-  const activeList = state.allTasks.filter(item => item.complete === false);
-  console.log(activeList);
+  document.querySelector("ul").innerHTML = "";
+  render.activeTasks();
 });
 const allTasksUI = (item) => {
   const list = document.querySelector("ul");
@@ -105,6 +105,12 @@ let render ={
    state.allTasks.forEach(element =>{
       allTasksUI(element);
     }); 
+  },
+  activeTasks: () => {
+    const activeList = state.allTasks.filter(item => item.complete === false);
+    activeList.forEach(element =>{
+      allTasksUI(element);
+    });
   }
 }
 
