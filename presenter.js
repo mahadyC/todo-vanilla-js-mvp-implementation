@@ -31,7 +31,7 @@ addBtn.addEventListener("click", (event) =>{
   addItem(addInp.value);
   console.log(state.allTasks);
   document.querySelector("ul").innerHTML = "";
-  render();
+  render.allTasksState();
 });
 const allTasksBtn = document.getElementById("show-all-tasks");
 allTasksBtn.addEventListener("click", (event) => {
@@ -78,7 +78,7 @@ let render ={
         const checkedValue = item.previousElementSibling.firstElementChild.checked ;
         updateItem(previousName, newName, checkedValue);
         document.querySelector("ul").innerHTML = "";
-        render();
+        render.allTasksState();
       });
       return listItem;
     }); 
