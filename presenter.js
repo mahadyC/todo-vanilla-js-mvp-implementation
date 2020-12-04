@@ -16,6 +16,15 @@ const updateItem = (previousName, newName, completeValue) =>{
   };
   state.allTasks.splice(itemIndex, 1, newObj);
 };
+const updateComplete = (itemName, completeValue) =>{
+  let itemIndex = state.allTasks.findIndex(item => item.name === itemName);
+  let newObj = {
+    id: "unique-id",
+    name: itemName,
+    complete: completeValue
+  };
+  state.allTasks.splice(itemIndex, 1, newObj);
+};
 const addItem = (itemName) =>{
   let newObj = {
     id: "unique-id",
@@ -80,6 +89,13 @@ let render ={
         updateItem(previousName, newName, checkedValue);
         document.querySelector("ul").innerHTML = "";
         render.allTasksState();
+      });
+      checkBox.addEventListener("change", (event) => {
+        const itemName = event.target.id.substring(9);
+        let checkedValue = event.target.checked;
+        updateComplete(itemName, checkedValue);
+        console.log(itemName);
+        console.log(state.allTasks);
       });
       return listItem;
     }); 
