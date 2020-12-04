@@ -84,6 +84,8 @@ const allTasksUI = (item) => {
     const itemName = event.target.id.substring(9);
     let checkedValue = event.target.checked;
     updateComplete(itemName, checkedValue);
+    document.querySelector("ul").innerHTML = "";
+    render.allTasksState();
   });
   editBtn.addEventListener("click", (event) =>{
     const item = document.getElementById(`${event.target.id.substring(12)}-rewrite-div`);
