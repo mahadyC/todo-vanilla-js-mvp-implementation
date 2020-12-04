@@ -72,6 +72,11 @@ let render ={
       itemDiv3.appendChild(editBtn);
       itemDiv3.appendChild(deleteBtn);
       itemDiv2.hidden = true;
+      checkBox.addEventListener("change", (event) => {
+        const itemName = event.target.id.substring(9);
+        let checkedValue = event.target.checked;
+        updateComplete(itemName, checkedValue);
+      });
       editBtn.addEventListener("click", (event) =>{
         const item = document.getElementById(`${event.target.id.substring(12)}-rewrite-div`);
         item.hidden ? item.hidden = false : item.hidden = true;
@@ -89,11 +94,6 @@ let render ={
         updateItemName(previousName, newName, checkedValue);
         document.querySelector("ul").innerHTML = "";
         render.allTasksState();
-      });
-      checkBox.addEventListener("change", (event) => {
-        const itemName = event.target.id.substring(9);
-        let checkedValue = event.target.checked;
-        updateComplete(itemName, checkedValue);
       });
       return listItem;
     }); 
