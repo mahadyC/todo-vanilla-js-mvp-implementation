@@ -1,30 +1,30 @@
 import { model } from './model'
 import { view } from './view'
 
-let state = model;
+let state = model.allTasks;
 /*-----------------------------------------------State-Handlers(State-Data-Manipulation)------------------------------------------ */
 const deleteItem = (itemName) =>{
-  let itemObj = state.allTasks.filter(item => item.name === itemName);
-  let itemIndex = state.allTasks.findIndex(item => item === itemObj[0]);
-  state.allTasks.splice(itemIndex, 1);
+  let itemObj = state.filter(item => item.name === itemName);
+  let itemIndex = state.findIndex(item => item === itemObj[0]);
+  state.splice(itemIndex, 1);
 };
 const updateItemName = (previousName, newName, completeValue) =>{
-  let itemIndex = state.allTasks.findIndex(item => item.name === previousName);
+  let itemIndex = state.findIndex(item => item.name === previousName);
   let newObj = {
     id:"unique-id",
     name: newName,
     complete: completeValue
   };
-  state.allTasks.splice(itemIndex, 1, newObj);
+  state.splice(itemIndex, 1, newObj);
 };
 const updateComplete = (itemName, completeValue) =>{
-  let itemIndex = state.allTasks.findIndex(item => item.name === itemName);
+  let itemIndex = state.findIndex(item => item.name === itemName);
   let newObj = {
     id: "unique-id",
     name: itemName,
     complete: completeValue
   };
-  state.allTasks.splice(itemIndex, 1, newObj);
+  state.splice(itemIndex, 1, newObj);
 };
 const addItem = (itemName) =>{
   let newObj = {
@@ -32,7 +32,7 @@ const addItem = (itemName) =>{
     name: itemName,
     complete: false
   }
-  state.allTasks.push(newObj);
+  state.push(newObj);
 };
 /*----------------------------------------------Data-Binders(State-Data+View/UI-Components)---------------------------------------*/
 const addInp = document.getElementById("task-name-input");
@@ -64,7 +64,7 @@ const changeHandler = (event) =>{
   updateComplete(itemName, checkedValue);
   document.querySelector("ul").innerHTML = "";
   render.allTasksState();
-};
+};  
 const editBtnHandler = (event) =>{
   const item = document.getElementById(`${event.target.id.substring(12)}-rewrite-div`);
   item.hidden ? item.hidden = false : item.hidden = true;
@@ -130,19 +130,19 @@ const completeTasksStyle = (taskId) =>{
 /*--------------------------------------------UI-Constructor(View-Handler)---------------------------------------------------------*/ 
 let render ={
   allTasksState: () => {
-   state.allTasks.forEach(element =>{
+   state.forEach(element =>{
       allTasksUI(element);
       element.complete === true ? completeTasksStyle(element.name) : "" ;
     }); 
   },
   activeTasks: () => {
-    const activeList = state.allTasks.filter(item => item.complete === false);
+    const activeList = state.filter(item => item.complete === false);
     activeList.forEach(element =>{
       allTasksUI(element);
     });
   },
   completeTasks: () => {
-    const completeList = state.allTasks.filter(item => item.complete === true);
+    const completeList = state.filter(item => item.complete === true);
     completeList.forEach(element =>{
       allTasksUI(element);
       completeTasksStyle(element.name);
