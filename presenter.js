@@ -48,14 +48,8 @@ allTasksBtn.addEventListener("click", (event) => {
   document.querySelector("ul").innerHTML = "";
   render.allTasksState();
 });
-const getNumOfActiveTasks = () =>{
-  const activeTasksList = state.filter(item => item.complete === false);
-  const listHeading = document.getElementById("list-heading");
-  listHeading.innerText = `${activeTasksList.length} tasks remaining`;
-};
 const activeTasksBtn = document.getElementById("show-active-tasks");
 activeTasksBtn.addEventListener("click", (event) => {
-  getNumOfActiveTasks();
   document.querySelector("ul").innerHTML = "";
   render.activeTasks();
 });
@@ -152,6 +146,8 @@ let render ={
   },
   activeTasks: () => {
     const activeList = state.filter(item => item.complete === false);
+    const listHeading = document.getElementById("list-heading");
+    listHeading.innerText = `${activeList.length} tasks remaining`;
     activeList.forEach(element =>{
       allTasksUI(element);
     });
