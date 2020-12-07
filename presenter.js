@@ -43,8 +43,13 @@ addBtn.addEventListener("click", (event) =>{
   document.querySelector("ul").innerHTML = "";
   render.allTasksState();
 });
+const getNumOfTasks = () =>{
+  const listHeading = document.getElementById("list-heading");
+  listHeading.innerText = `${state.length} num of all tasks`;
+};
 const allTasksBtn = document.getElementById("show-all-tasks");
 allTasksBtn.addEventListener("click", (event) => {
+  getNumOfTasks();
   document.querySelector("ul").innerHTML = "";
   render.allTasksState();
 });
