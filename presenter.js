@@ -64,8 +64,14 @@ activeTasksBtn.addEventListener("click", (event) => {
   document.querySelector("ul").innerHTML = "";
   render.activeTasks();
 });
+const getNumOfCompleteTasks = () =>{
+  const completeTasksList = state.filter(item => item.complete === true);
+  const listHeading = document.getElementById("list-heading");
+  listHeading.innerText = `${completeTasksList.length} tasks complete`;
+};
 const completeTasksBtn = document.getElementById("show-complete-tasks");
 completeTasksBtn.addEventListener("click", (event) => {
+  getNumOfCompleteTasks();
   document.querySelector("ul").innerHTML = "";
   render.completeTasks();
 });
