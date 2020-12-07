@@ -73,6 +73,8 @@ const deleteBtnHandler = (event) =>{
   const item = document.getElementById(`${event.target.id.substring(14)}`);
   item.remove();
   deleteItem(item.id);
+  document.querySelector("ul").innerHTML = "";
+  render.allTasksState();
 };
 const saveBtnHandler = (event) =>{
   const item = document.getElementById(`${event.target.id.substring(12)}-rewrite-div`);
