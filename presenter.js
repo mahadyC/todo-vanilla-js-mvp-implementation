@@ -38,9 +38,8 @@ const addItem = (itemName) =>{
 const addInp = document.getElementById("task-name-input");
 const addBtn = document.getElementById("add-task");
 addBtn.addEventListener("click", (event) =>{
-  console.log(state.allTasks);
-  addItem(addInp.value);
-  console.log(state.allTasks);
+  addInp.value !== '' ? addItem(addInp.value) : alert("Write a task name");
+  addInp.value = "";
   document.querySelector("ul").innerHTML = "";
   render.allTasksState();
 });
