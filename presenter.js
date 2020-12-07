@@ -148,7 +148,8 @@ const completeTasksStyle = (taskId) =>{
 /*--------------------------------------------UI-Constructor(View-Generator-For-Different-Routes/Tabs)----------------------------*/ 
 let render ={
   allTasksState: () => {
-   state.forEach(element =>{
+    getNumOfTasks();
+    state.forEach(element =>{
       allTasksUI(element);
       element.complete === true ? completeTasksStyle(element.name) : "" ;
     }); 
