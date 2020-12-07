@@ -107,6 +107,7 @@ const allTasksUI = (item) => {
   itemDiv3.appendChild(editBtn);
   itemDiv3.appendChild(deleteBtn);
   itemDiv2.hidden = true;
+  /*---------------------------------Bind-Handlers-With-UI------------------------------------*/
   checkBox.addEventListener("change", (event) => {
     changeHandler(event);
   });
@@ -127,7 +128,7 @@ const completeTasksStyle = (taskId) =>{
   completeEl.style.textDecoration = "line-through";
   completeEl.lastElementChild.firstElementChild.disabled = true;
 }
-/*--------------------------------------------UI-Constructor(View-Handler)---------------------------------------------------------*/ 
+/*--------------------------------------------UI-Constructor(View-Generator-For-Different-Routes/Tabs)----------------------------*/ 
 let render ={
   allTasksState: () => {
    state.forEach(element =>{
