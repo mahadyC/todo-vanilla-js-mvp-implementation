@@ -132,7 +132,7 @@ const completeTasksStyle = (taskId) =>{
 let render ={
   allTasksState: () => {
     const listHeading = document.getElementById("list-heading");
-    listHeading.innerText = `${state.length} num of all tasks`;
+    state.length > 1 ? listHeading.innerText = `${state.length} tasks in the list` : listHeading.innerText = `${state.length} task in the list`;
     state.forEach(element =>{
       allTasksUI(element);
       element.complete === true ? completeTasksStyle(element.name) : "" ;
@@ -141,7 +141,7 @@ let render ={
   activeTasks: () => {
     const activeList = state.filter(item => item.complete === false);
     const listHeading = document.getElementById("list-heading");
-    listHeading.innerText = `${activeList.length} tasks remaining`;
+    activeList.length > 1 ? listHeading.innerText = `${activeList.length} tasks remaining` : listHeading.innerText = `${activeList.length} task remaining`;
     activeList.forEach(element =>{
       allTasksUI(element);
     });
@@ -149,7 +149,7 @@ let render ={
   completeTasks: () => {
     const completeList = state.filter(item => item.complete === true);
     const listHeading = document.getElementById("list-heading");
-    listHeading.innerText = `${completeList.length} tasks complete`;
+    completeList.length > 1 ? listHeading.innerText = `${completeList.length} tasks complete` : listHeading.innerText = `${completeList.length} task complete`;
     completeList.forEach(element =>{
       allTasksUI(element);
       completeTasksStyle(element.name);
