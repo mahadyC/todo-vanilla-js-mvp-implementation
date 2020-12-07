@@ -43,13 +43,8 @@ addBtn.addEventListener("click", (event) =>{
   document.querySelector("ul").innerHTML = "";
   render.allTasksState();
 });
-const getNumOfTasks = () =>{
-  const listHeading = document.getElementById("list-heading");
-  listHeading.innerText = `${state.length} num of all tasks`;
-};
 const allTasksBtn = document.getElementById("show-all-tasks");
 allTasksBtn.addEventListener("click", (event) => {
-  getNumOfTasks();
   document.querySelector("ul").innerHTML = "";
   render.allTasksState();
 });
@@ -148,7 +143,8 @@ const completeTasksStyle = (taskId) =>{
 /*--------------------------------------------UI-Constructor(View-Generator-For-Different-Routes/Tabs)----------------------------*/ 
 let render ={
   allTasksState: () => {
-    getNumOfTasks();
+    const listHeading = document.getElementById("list-heading");
+    listHeading.innerText = `${state.length} num of all tasks`;
     state.forEach(element =>{
       allTasksUI(element);
       element.complete === true ? completeTasksStyle(element.name) : "" ;
