@@ -70,7 +70,7 @@ const changeHandler = (event) =>{
   let checkedValue = event.target.checked;
   updateComplete(itemName, checkedValue);
   document.querySelector("ul").innerHTML = "";
-  render.allTasksState();
+  stateUI.ui === "main ui" ? render.allTasksState() : stateUI.ui === "active ui" ? render.activeTasks() : render.completeTasks();
 };  
 const editBtnHandler = (event) =>{
   const item = document.getElementById(`${event.target.id.substring(12)}-rewrite-div`);
