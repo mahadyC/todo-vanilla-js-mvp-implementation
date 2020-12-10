@@ -45,7 +45,7 @@ addBtn.addEventListener("click", (event) =>{
   addInp.value !== '' ? addItem(addInp.value) : alert("Write a task name");
   addInp.value = "";
   document.querySelector("ul").innerHTML = "";
-  render.allTasksState();
+  stateUI.ui === "main ui" ? render.allTasksState() : render.activeTasks();
 });
 const allTasksBtn = document.getElementById("show-all-tasks");
 allTasksBtn.addEventListener("click", (event) => {
