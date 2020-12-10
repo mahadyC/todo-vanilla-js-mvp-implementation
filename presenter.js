@@ -90,7 +90,7 @@ const saveBtnHandler = (event) =>{
   const checkedValue = item.previousElementSibling.firstElementChild.checked ;
   updateItemName(previousName, newName, checkedValue);
   document.querySelector("ul").innerHTML = "";
-  render.allTasksState();
+  stateUI.ui === "main ui" ? render.allTasksState() : render.activeTasks();
 };
 /*------------------------------------------------------List-UI-Component--------------------------------------------------------*/
 const allTasksUI = (item) => {
