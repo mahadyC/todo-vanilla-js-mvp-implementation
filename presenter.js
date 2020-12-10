@@ -42,10 +42,14 @@ const addItem = (itemName) =>{
 const addInp = document.getElementById("task-name-input");
 const addBtn = document.getElementById("add-task");
 addBtn.addEventListener("click", (event) =>{
-  addInp.value !== '' ? addItem(addInp.value) : alert("Write a task name");
-  addInp.value = "";
-  document.querySelector("ul").innerHTML = "";
-  stateUI.ui === "main ui" ? render.allTasksState() : render.activeTasks();
+  if(addInp.value !== ""){
+    addItem(addInp.value)
+    addInp.value = "";
+    document.querySelector("ul").innerHTML = "";
+    stateUI.ui === "main ui" ? render.allTasksState() : render.activeTasks();
+  }else{
+    alert("Write a task name");
+  }
 });
 const allTasksBtn = document.getElementById("show-all-tasks");
 allTasksBtn.addEventListener("click", (event) => {
