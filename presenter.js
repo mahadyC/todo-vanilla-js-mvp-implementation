@@ -2,6 +2,10 @@ import { model } from './model'
 import { view } from './view'
 
 let state = model.allTasks;
+let stateUI = { ui: "main ui"};
+const changeUI = (uiName) =>{
+  stateUI.ui = uiName;
+};
 /*-----------------------------------------------State-Handlers(State-Data-Manipulation)------------------------------------------ */
 const deleteItem = (itemName) =>{
   let itemObj = state.filter(item => item.name === itemName);
@@ -47,16 +51,19 @@ const allTasksBtn = document.getElementById("show-all-tasks");
 allTasksBtn.addEventListener("click", (event) => {
   document.querySelector("ul").innerHTML = "";
   render.allTasksState();
+  changeUI("main ui");
 });
 const activeTasksBtn = document.getElementById("show-active-tasks");
 activeTasksBtn.addEventListener("click", (event) => {
   document.querySelector("ul").innerHTML = "";
   render.activeTasks();
+  changeUI("active ui");
 });
 const completeTasksBtn = document.getElementById("show-complete-tasks");
 completeTasksBtn.addEventListener("click", (event) => {
   document.querySelector("ul").innerHTML = "";
   render.completeTasks();
+  changeUI("complete ui");
 });
 const changeHandler = (event) =>{
   const itemName = event.target.id.substring(9);
