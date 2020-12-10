@@ -88,9 +88,13 @@ const saveBtnHandler = (event) =>{
   const previousName = document.getElementById(`${event.target.id.substring(12)}`).id;
   const newName = item.firstChild.value;
   const checkedValue = item.previousElementSibling.firstElementChild.checked ;
-  updateItemName(previousName, newName, checkedValue);
-  document.querySelector("ul").innerHTML = "";
-  stateUI.ui === "main ui" ? render.allTasksState() : render.activeTasks();
+  if(newName !== ""){
+    updateItemName(previousName, newName, checkedValue);
+    document.querySelector("ul").innerHTML = "" ;
+    stateUI.ui === "main ui" ? render.allTasksState() : render.activeTasks();
+  }else{
+    alert("write a task name");
+  }
 };
 /*------------------------------------------------------List-UI-Component--------------------------------------------------------*/
 const allTasksUI = (item) => {
