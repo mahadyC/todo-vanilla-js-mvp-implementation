@@ -1,0 +1,55 @@
+body {
+  margin: 0 auto;
+  width: 70%;
+  height: 100vh;
+  border-style: dashed;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  text-align: center;
+}
+main {
+  border-style: dotted;
+  flex: 1 0 auto;
+}
+h2 {
+  text-align: center;
+}
+.task-adding-section {
+  border-style: groove;
+  display: flex;
+  justify-content: center;
+}
+#add-task {
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+}
+.task-sort-buttons {
+  border: solid blue;
+  display: flex;
+  justify-content: center;
+}
+.task-sort-buttons button {
+  font-size: 16px;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+}
+li {
+  align-self: center;
+}
+li button {
+  width: 150px;
+  background-color: #ff8a00;
+  font-size: 16px;
+}
+button[id^="Delete"] {
+  background-color: red;
+}
+footer {
+  align-self: center;
+  font-size: 1rem;
+}
