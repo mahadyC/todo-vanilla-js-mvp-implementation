@@ -2,7 +2,6 @@ body {
   margin: 0 auto;
   width: 70%;
   height: 100vh;
-  border-style: dashed;
   display: flex;
   flex-direction: column;
 }
@@ -10,14 +9,12 @@ header {
   text-align: center;
 }
 main {
-  border-style: dotted;
   flex: 1 0 auto;
 }
 h2 {
   text-align: center;
 }
 .task-adding-section {
-  border-style: groove;
   display: flex;
   justify-content: center;
 }
@@ -27,8 +24,8 @@ h2 {
   font-size: 16px;
 }
 .task-sort-buttons {
-  border: solid blue;
   display: flex;
+  margin-top: 5px;
   justify-content: center;
 }
 .task-sort-buttons button {
