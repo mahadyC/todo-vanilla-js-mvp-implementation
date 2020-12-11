@@ -1,12 +1,15 @@
 import { model } from './model'
 import { view } from './view'
 
+/*------------------------------------------------Data-State-Of-The-Application----------------------------------------------------*/
 let state = model.allTasks;
+/*------------------------------------------------Route-State-Of-The-Application---------------------------------------------------*/
 let router = { currentRoute: "main ui"};
+/*-----------------------------------------------------Route-State-Handler---------------------------------------------------------*/
 const updateRoute = (routeName) =>{
   router.currentRoute = routeName;
 };
-/*-----------------------------------------------State-Handlers(State-Data-Manipulation)------------------------------------------ */
+/*----------------------------------------------Data-State-Handlers(State-Data-Manipulation)---------------------------------------*/
 const deleteItem = (itemName) =>{
   let itemObj = state.filter(item => item.name === itemName);
   let itemIndex = state.findIndex(item => item === itemObj[0]);
