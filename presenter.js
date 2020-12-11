@@ -3,8 +3,8 @@ import { view } from './view'
 
 let state = model.allTasks;
 let router = { currentRoute: "main ui"};
-const updateRoute = (uiName) =>{
-  router.currentRoute = uiName;
+const updateRoute = (routeName) =>{
+  router.currentRoute = routeName;
 };
 /*-----------------------------------------------State-Handlers(State-Data-Manipulation)------------------------------------------ */
 const deleteItem = (itemName) =>{
