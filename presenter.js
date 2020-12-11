@@ -103,7 +103,7 @@ const saveBtnHandler = (event) =>{
     alert("write a task name");
   }
 };
-/*------------------------------------------------------List-UI-Component--------------------------------------------------------*/
+/*------------------------------------------------------UI-Component-List-Construction----------------------------------------------*/
 const allTasksUI = (item) => {
   const list = document.querySelector("ul");
   const listItem = view.listEl(item.name);
