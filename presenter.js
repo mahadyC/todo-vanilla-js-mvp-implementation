@@ -3,7 +3,7 @@ import { view } from './view'
 
 let state = model.allTasks;
 let router = { currentRoute: "main ui"};
-const changeUI = (uiName) =>{
+const updateRoute = (uiName) =>{
   router.currentRoute = uiName;
 };
 /*-----------------------------------------------State-Handlers(State-Data-Manipulation)------------------------------------------ */
@@ -55,19 +55,19 @@ const allTasksBtn = document.getElementById("show-all-tasks");
 allTasksBtn.addEventListener("click", (event) => {
   document.querySelector("ul").innerHTML = "";
   render.allTasksState();
-  changeUI("main ui");
+  updateRoute("main ui");
 });
 const activeTasksBtn = document.getElementById("show-active-tasks");
 activeTasksBtn.addEventListener("click", (event) => {
   document.querySelector("ul").innerHTML = "";
   render.activeTasks();
-  changeUI("active ui");
+  updateRoute("active ui");
 });
 const completeTasksBtn = document.getElementById("show-complete-tasks");
 completeTasksBtn.addEventListener("click", (event) => {
   document.querySelector("ul").innerHTML = "";
   render.completeTasks();
-  changeUI("complete ui");
+  updateRoute("complete ui");
 });
 const changeHandler = (event) =>{
   const itemName = event.target.id.substring(9);
