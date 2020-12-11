@@ -2,9 +2,9 @@ import { model } from './model'
 import { view } from './view'
 
 let state = model.allTasks;
-let stateUI = { ui: "main ui"};
+let router = { currentRoute: "main ui"};
 const changeUI = (uiName) =>{
-  stateUI.ui = uiName;
+  router.currentRoute = uiName;
 };
 /*-----------------------------------------------State-Handlers(State-Data-Manipulation)------------------------------------------ */
 const deleteItem = (itemName) =>{
@@ -46,7 +46,7 @@ addBtn.addEventListener("click", (event) =>{
     addItem(addInp.value)
     addInp.value = "";
     document.querySelector("ul").innerHTML = "";
-    stateUI.ui === "main ui" ? render.allTasksState() : render.activeTasks();
+    router.currentRoute === "main ui" ? render.allTasksState() : render.activeTasks();
   }else{
     alert("Write a task name");
   }
@@ -74,7 +74,7 @@ const changeHandler = (event) =>{
   let checkedValue = event.target.checked;
   updateComplete(itemName, checkedValue);
   document.querySelector("ul").innerHTML = "";
-  stateUI.ui === "main ui" ? render.allTasksState() : stateUI.ui === "active ui" ? render.activeTasks() : render.completeTasks();
+  router.currentRoute === "main ui" ? render.allTasksState() : router.currentRoute === "active ui" ? render.activeTasks() : render.completeTasks();
 };  
 const editBtnHandler = (event) =>{
   const item = document.getElementById(`${event.target.id.substring(12)}-rewrite-div`);
@@ -85,7 +85,7 @@ const deleteBtnHandler = (event) =>{
   item.remove();
   deleteItem(item.id);
   document.querySelector("ul").innerHTML = "";
-  stateUI.ui === "main ui" ? render.allTasksState() : stateUI.ui === "active ui" ? render.activeTasks() : render.completeTasks();
+  router.currentRoute === "main ui" ? render.allTasksState() : router.currentRoute === "active ui" ? render.activeTasks() : render.completeTasks();
 };
 const saveBtnHandler = (event) =>{
   const item = document.getElementById(`${event.target.id.substring(12)}-rewrite-div`);
@@ -95,7 +95,7 @@ const saveBtnHandler = (event) =>{
   if(newName !== ""){
     updateItemName(previousName, newName, checkedValue);
     document.querySelector("ul").innerHTML = "" ;
-    stateUI.ui === "main ui" ? render.allTasksState() : render.activeTasks();
+    router.currentRoute === "main ui" ? render.allTasksState() : render.activeTasks();
   }else{
     alert("write a task name");
   }
